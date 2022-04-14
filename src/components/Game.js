@@ -11,6 +11,8 @@ function Game(props){
     const gameState = props.gameState
     const setGameState = props.setGameState
 
+    const host = props.host
+
     const count = useRef(0)
     const [ci, setCi] = useState(require("../static/cardback.jpg"))
     const cardBack =  require("../static/cardback.jpg")
@@ -21,6 +23,19 @@ function Game(props){
             init()
         }
     },[ws])
+
+    useEffect( () =>{
+        let e = document.getElementsByClassName("quizbtns")[0];
+        if(host == 0){
+            e.style.visibility = 'hidden'
+            // e.style.display = "none"
+        }
+        else{
+            e.style.visibility = 'visible'
+            // e.style.display = "flex"
+        }
+    }
+    ,[host])
 
 
     const nextQuiz = () =>{

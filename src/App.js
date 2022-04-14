@@ -32,18 +32,7 @@ function App(){
         }
     },[ws])
 
-    useEffect( () =>{
-        let e = document.getElementsByClassName("quizbtns")[0];
-        if(host == 0){
-            e.style.visibility = 'hidden'
-            // e.style.display = "none"
-        }
-        else{
-            e.style.visibility = 'visible'
-            // e.style.display = "flex"
-        }
-    }
-    ,[host])
+
 
 
     useEffect( () =>{
@@ -80,7 +69,8 @@ function App(){
             <div className="mainPage">
                 <Login ws = {ws} setWs = {setWs} uid = {uid} setUid = {setUid}/>
                 <Game  ws = {ws} setWs = {setWs} uid = {uid} setUid = {setUid} 
-                gameState = {gameState} setGameState = {setGameState} />
+                gameState = {gameState} setGameState = {setGameState} 
+                host = {host} />
                 <Chat chatState={chatState} setChatState = {setChatState}/>
                 <SendText ws = {ws} uid = {uid} />
             </div>

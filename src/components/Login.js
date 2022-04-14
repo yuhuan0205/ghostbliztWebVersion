@@ -25,14 +25,14 @@ function Login(props){
         // solved
         if(element.value != ""){
             setUid(element.value)
-            element = document.getElementsByClassName("loginPage")[0];
-            element.style.display = "none";
-            element = document.getElementsByClassName("game")[0];
-            element.style.display = "flex"
-            element = document.getElementsByClassName("chat")[0];
-            element.style.display = "inline"
-            element = document.getElementsByClassName("textBoxContainer")[0];
-            element.style.display = "inline"   
+            // element = document.getElementsByClassName("loginPage")[0];
+            // element.style.display = "none";
+            // element = document.getElementsByClassName("game")[0];
+            // element.style.display = "flex"
+            // element = document.getElementsByClassName("chat")[0];
+            // element.style.display = "inline"
+            // element = document.getElementsByClassName("textBoxContainer")[0];
+            // element.style.display = "inline"   
         }
     }
 
