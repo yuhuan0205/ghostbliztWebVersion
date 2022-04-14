@@ -74,7 +74,7 @@ function App(){
                     <Routes>
                         <Route path = "/" element = {<Login ws = {ws} setWs = {setWs} uid = {uid} setUid = {setUid}/>}></Route>
                         <Route path = "/game" element = {
-                                <div>
+                                <div className="gamePlace">
                                     <Game  ws = {ws} setWs = {setWs} uid = {uid} setUid = {setUid} 
                                     gameState = {gameState} setGameState = {setGameState} 
                                     host = {host} />

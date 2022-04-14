@@ -68,6 +68,17 @@ body {
     font-size: 12px;
     font-weight: bold;
 }
+.gamePlace{
+    width: 1200px;
+    height: 650px;
+    /* margin: auto; */
+    display: grid;
+    grid-template-columns: repeat(15,1fr);
+    grid-template-rows: repeat(15,1fr);
+
+    background-color:rgb(224, 223, 223);
+    border-radius : 10px;
+}
 
 .game{
     grid-column-start: 8;
