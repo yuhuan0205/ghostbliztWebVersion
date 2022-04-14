@@ -6,6 +6,9 @@ import {useState, useEffect} from "react"
 import webSocket from 'socket.io-client'
 import SendText from "./components/SendText";
 import config from "./static/config.json"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+
 function App(){
 
     const [ws,setWs] = useState(null)
@@ -67,12 +70,21 @@ function App(){
 
     return(
             <div className="mainPage">
-                <Login ws = {ws} setWs = {setWs} uid = {uid} setUid = {setUid}/>
-                <Game  ws = {ws} setWs = {setWs} uid = {uid} setUid = {setUid} 
-                gameState = {gameState} setGameState = {setGameState} 
-                host = {host} />
-                <Chat chatState={chatState} setChatState = {setChatState}/>
-                <SendText ws = {ws} uid = {uid} />
+                <Router>
+                    <Routes>
+                        <Route path = "/" element = {<Login ws = {ws} setWs = {setWs} uid = {uid} setUid = {setUid}/>}></Route>
+                        <Route path = "/game" element = {
+                                <div>
+                                    <Game  ws = {ws} setWs = {setWs} uid = {uid} setUid = {setUid} 
+                                    gameState = {gameState} setGameState = {setGameState} 
+                                    host = {host} />
+                                    <Chat chatState={chatState} setChatState = {setChatState}/>
+                                    <SendText ws = {ws} uid = {uid} />
+                                </div>
+                                                        }></Route>
+
+                    </Routes>
+                </Router>
             </div>
     )
 }

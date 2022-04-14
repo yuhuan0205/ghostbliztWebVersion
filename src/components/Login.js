@@ -2,10 +2,12 @@ import React from "react"
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css"
 import {useState, useEffect} from "react"
-
-
+import { useNavigate } from 'react-router-dom';
 
 function Login(props){
+
+    const goPath = useNavigate();//設常數接收useHistory()回傳的物件
+
 
     const ws = props.ws
     const setWs = props.setWs
@@ -25,6 +27,8 @@ function Login(props){
         // solved
         if(element.value != ""){
             setUid(element.value)
+            
+            
             // element = document.getElementsByClassName("loginPage")[0];
             // element.style.display = "none";
             // element = document.getElementsByClassName("game")[0];
@@ -39,6 +43,7 @@ function Login(props){
     useEffect(()=>{
         if(ws){
             ws.emit("login",{uid:props.uid})
+            goPath('/game')
         }
     },[props.uid] )
 

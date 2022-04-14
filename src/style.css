@@ -73,7 +73,7 @@ body {
     grid-column-start: 8;
     grid-row-start: 3;
     grid-row-end: 14;
-    display:none;
+    display:flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -108,7 +108,7 @@ body {
 }
 
 .chat{
-    display: none;
+    display: inline;
     color: green;
     grid-column-start: 2 ;
     grid-column-end: 7 ;
@@ -121,7 +121,7 @@ body {
 }
 
 .textBoxContainer{
-    display: none;
+    display: inline;
     grid-column-start: 2 ;
     grid-column-end: 7 ;
     grid-row-start: 14 ;
