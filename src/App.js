@@ -7,6 +7,8 @@ import webSocket from 'socket.io-client'
 import SendText from "./components/SendText";
 import config from "./static/config.json"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Lobby from "./components/Lobby";
+import Score from "./components/Score";
 
 
 function App(){
@@ -16,6 +18,7 @@ function App(){
     const [gameState, setGameState] = useState("init")
     const [chatState, setChatState] = useState([])
     const [host, setHost] = useState(0)
+    const [score, setScore] = useState([])
 
     useEffect(()=>{
         //記得要改
@@ -31,6 +34,7 @@ function App(){
             // console.log(ws)
             // console.log('success connect!')
             update()
+            updateScore()
             //設定監聽
         }
     },[ws])
@@ -67,6 +71,13 @@ function App(){
         })
     }
 
+    const updateScore = () =>{
+        ws.on('updateScore', message => {
+            setScore(prevArray => message.data )
+            // console.log(message.uid + " " + message.msg)
+        })
+    }
+
 
     return(
             <div className="mainPage">
@@ -80,8 +91,10 @@ function App(){
                                     host = {host} />
                                     <Chat chatState={chatState} setChatState = {setChatState}/>
                                     <SendText ws = {ws} uid = {uid} />
+                                    <Score score = {score}/>
                                 </div>
                                                         }></Route>
+                        <Route path = "/lobby" element = {<Lobby uid = {uid}/>}></Route>
 
                     </Routes>
                 </Router>

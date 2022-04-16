@@ -1,7 +1,7 @@
 import React from "react"
 import {useState, useEffect, useRef} from "react"
 import Button from "react-bootstrap/Button";
-
+import { useNavigate } from 'react-router-dom';
 
 
 function Game(props){
@@ -16,6 +16,8 @@ function Game(props){
     const count = useRef(0)
     const [ci, setCi] = useState(require("../static/cardback.jpg"))
     const cardBack =  require("../static/cardback.jpg")
+
+    const goPath = useNavigate();//設常數接收useHistory()回傳的物件
 
     useEffect(()=>{
         if(ws){
@@ -85,6 +87,7 @@ function Game(props){
 
             <div className="quizbtns">
                 <Button onClick={nextQuiz} className="quizbtn btn-secondary">出題</Button>
+                <Button onClick={() =>{goPath("/lobby")}} className="quizbtn btn-secondary">Lobby</Button>
             </div>
         </div>
     )

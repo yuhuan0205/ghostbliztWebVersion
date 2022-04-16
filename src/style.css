@@ -40,7 +40,7 @@ body {
 
     width: 500px;
     height: 300px;
-    background-color: rgb(185, 184, 184);;
+    background-color: rgb(185, 184, 184);
     margin: auto;
     display: flex;
     align-items: center;
@@ -81,7 +81,8 @@ body {
 }
 
 .game{
-    grid-column-start: 8;
+    grid-column-start: 5;
+    grid-column-end: 12;
     grid-row-start: 3;
     grid-row-end: 14;
     display:flex;
@@ -118,11 +119,20 @@ body {
     font-family: 'Noto Sans TC', sans-serif;
 }
 
+.scoretable{
+    
+    grid-column-start: 12;
+    grid-column-end: 15;
+    grid-row-start: 2;
+    grid-row-end: 10;
+    font-size: 14px;
+}
+
 .chat{
     display: inline;
     color: green;
     grid-column-start: 2 ;
-    grid-column-end: 7 ;
+    grid-column-end: 5 ;
     grid-row-start: 10 ;
     grid-row-end: 14 ;
     background-color: black;
@@ -134,7 +144,7 @@ body {
 .textBoxContainer{
     display: inline;
     grid-column-start: 2 ;
-    grid-column-end: 7 ;
+    grid-column-end: 5 ;
     grid-row-start: 14 ;
     grid-row-end: 15 ;
 }
@@ -184,3 +194,20 @@ body {
 .flip-animation{
     transform: rotateY(-180deg);
 }
+
+.lobbyPage{
+    grid-column-start: 2;
+    grid-row-start: 8;
+    text-align: center;
+
+    width: 300px;
+    height: 500px;
+    background-color: rgb(185, 184, 184);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius : 10px;
+}
+

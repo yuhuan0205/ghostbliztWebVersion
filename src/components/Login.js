@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Login(props){
 
-    const goPath = useNavigate();//設常數接收useHistory()回傳的物件
+    const goPath = useNavigate();
 
 
     const ws = props.ws
