@@ -19,7 +19,7 @@ function Score(props){
                 <tbody>
                 {   
                     score.map( (scoreItem, index) =>{
-                        console.log(scoreItem)
+                        
                         const {uid, score} = scoreItem
                         return (
                             <tr>

@@ -68,7 +68,7 @@ body {
     font-size: 12px;
     font-weight: bold;
 }
-.gamePlace{
+.innerPlace{
     width: 1200px;
     height: 650px;
     /* margin: auto; */
@@ -197,17 +197,77 @@ body {
 
 .lobbyPage{
     grid-column-start: 2;
+    grid-column-end: 4;
     grid-row-start: 8;
     text-align: center;
 
     width: 300px;
     height: 500px;
     background-color: rgb(185, 184, 184);
-    margin: auto;
+    
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
+    
     border-radius : 10px;
+    box-shadow: 4px 4px 4px rgb(165, 165, 165);
 }
 
+.icon{
+    margin-top: 30%;
+    width: 100px;
+    height: 100px;
+    border-radius : 100px;
+    background-image: url("./static/person-circle.svg");
+    background-size: 100%;
+    box-shadow: 5px 5px 5px rgb(120, 118, 118);
+
+}
+
+.lobbyId{
+    margin-top: 10%;
+}
+
+.roombtns{
+    width: 200px;
+    height: 100px;
+    margin-top: 5%;
+}
+
+.roombtn{
+    width: 75px;
+    margin: 10px;
+}
+
+.roomList{
+    grid-column-start: 6;
+    grid-column-end: 15;
+    grid-row-start: 8;
+    text-align: center;
+    border-radius : 10px;
+    width: 750px;
+    height: 500px;
+    background-color: rgb(224, 223, 223);
+
+    border-style: solid ;
+
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(5,1fr);
+}
+
+.room{
+    
+    margin-top: 20px;
+    width: 600px;
+    height: 80px;
+    grid-column-start: 2;
+    grid-column-end: 8;
+
+
+    background-color: rgb(75, 169, 138);
+    border-radius : 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
