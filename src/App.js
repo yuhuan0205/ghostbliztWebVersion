@@ -19,6 +19,7 @@ function App(){
     const [chatState, setChatState] = useState([])
     const [host, setHost] = useState(0)
     const [score, setScore] = useState([])
+    const [roomNumber,setRoomNumber] = useState("0")
 
     useEffect(()=>{
         //記得要改
@@ -35,6 +36,8 @@ function App(){
             // console.log('success connect!')
             update()
             updateScore()
+            test()
+            getRoomInfo()
             //設定監聽
         }
     },[ws])
@@ -63,8 +66,8 @@ function App(){
 
 
     const update = () =>{
-        ws.on('update', message => {
-            setChatState(prevArray => [...prevArray, {uid:message.uid, msg:message.msg}] )
+        ws.on('update', msg => {
+            setChatState(prevArray => [...prevArray, {uid:msg.uid, msg:msg.msg}] )
             let e = document.getElementsByClassName("chat")[0]
             e.scrollTop += 25
             // console.log(message.uid + " " + message.msg)
@@ -72,9 +75,21 @@ function App(){
     }
 
     const updateScore = () =>{
-        ws.on('updateScore', message => {
-            setScore(prevArray => message.data )
+        ws.on('updateScore', msg => {
+            setScore(prevArray => msg.data )
             // console.log(message.uid + " " + message.msg)
+        })
+    }
+
+    const test = () => {
+        ws.on("console", msg=>{
+            console.log(msg)
+        })
+    }
+
+    const getRoomInfo = () =>{
+        ws.on('roomInfo', msg => {
+            setRoomNumber(msg.msg)
         })
     }
 
@@ -86,6 +101,7 @@ function App(){
                         <Route path = "/" element = {<Login ws = {ws} setWs = {setWs} uid = {uid} setUid = {setUid}/>}></Route>
                         <Route path = "/game" element = {
                                 <div className="innerPlace">
+                                    <h3 className="roomNumber">{roomNumber}</h3>
                                     <Game  ws = {ws} setWs = {setWs} uid = {uid} setUid = {setUid} 
                                     gameState = {gameState} setGameState = {setGameState} 
                                     host = {host} />
@@ -94,7 +110,7 @@ function App(){
                                     <Score score = {score}/>
                                 </div>
                                                         }></Route>
-                        <Route path = "/lobby" element = {<Lobby uid = {uid}/>}></Route>
+                        <Route path = "/lobby" element = {<Lobby uid = {uid} ws = {ws}/>}></Route>
 
                     </Routes>
                 </Router>

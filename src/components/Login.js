@@ -43,7 +43,7 @@ function Login(props){
     useEffect(()=>{
         if(ws){
             ws.emit("login",{uid:props.uid})
-            goPath('/game')
+            goPath('/lobby')
         }
     },[props.uid] )
 

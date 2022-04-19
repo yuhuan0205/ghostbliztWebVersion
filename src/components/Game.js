@@ -17,12 +17,15 @@ function Game(props){
     const [ci, setCi] = useState(require("../static/cardback.jpg"))
     const cardBack =  require("../static/cardback.jpg")
 
+    
+
     const goPath = useNavigate();//設常數接收useHistory()回傳的物件
 
     useEffect(()=>{
         if(ws){
             test()
             init()
+            
         }
     },[ws])
 
@@ -64,6 +67,7 @@ function Game(props){
             flip()
         })
     }
+
     
     const flip = () =>{
         let e = document.getElementsByClassName("flip-card-inner")[0]
@@ -87,7 +91,7 @@ function Game(props){
 
             <div className="quizbtns">
                 <Button onClick={nextQuiz} className="quizbtn btn-secondary">出題</Button>
-                <Button onClick={() =>{goPath("/lobby")}} className="quizbtn btn-secondary">Lobby</Button>
+                {/* <Button onClick={() =>{goPath("/lobby")}} className="quizbtn btn-secondary">Lobby</Button> */}
             </div>
         </div>
     )
