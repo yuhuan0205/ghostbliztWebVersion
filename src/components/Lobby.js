@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function Lobby(props){
     const uid = props.uid
     const ws = props.ws
+    const roomList = props.roomList
     const goPath = useNavigate();
 
     const createRoom = ()=>{
@@ -20,8 +21,17 @@ function Lobby(props){
         }
     }
 
+    const refresh = () =>{
+        ws.emit("getRoomList",{uid:uid})
+    }
 
-    const rooms = [{rid:0},{rid:1},{rid:2}]
+    const joinRoomBybtn = (roomNumber)=>{
+        ws.emit("joinRoom",{uid:uid, room:roomNumber})
+        goPath('/game')
+    }
+
+
+    // const rooms = [{rid:0},{rid:1},{rid:2}]
     return(
         <div className="innerPlace">
             <div className='lobbyPage'>
@@ -32,16 +42,15 @@ function Lobby(props){
                     <Button onClick={joinRoom} className = "roombtn btn-secondary">Join</Button>
                 </div>
                 <input type="text" className="roomEnter" placeholder="Room"/>
+                <input onClick={refresh} type="button" className="refreshbtn" ></input >
             </div>
             <div className="roomList">
-                {
-                    rooms.map((room, index)=>{
-                        const {rid} = room
-                        
+                {   
+                    
+                    roomList.map((roomItem, index)=>{
+                        const room = roomItem
                         return(
-                            <div className="room" style={{ gridRowStart: index+1 , gridRowRnd: index+2}}>
-                                <h4>{"room : " + String(rid)}</h4>
-                            </div>
+                            <Button value={room} type="button" onClick={()=>{joinRoomBybtn(room)}} className="room btn btn-secondary" style={{ gridRowStart: index+1 , gridRowRnd: index+2}}>{room}</Button>
                         )
                     })
                 }

@@ -43,6 +43,7 @@ function Login(props){
     useEffect(()=>{
         if(ws){
             ws.emit("login",{uid:props.uid})
+            ws.emit("getRoomList",{uid:uid})
             goPath('/lobby')
         }
     },[props.uid] )

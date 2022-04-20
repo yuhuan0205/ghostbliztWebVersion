@@ -20,6 +20,7 @@ function App(){
     const [host, setHost] = useState(0)
     const [score, setScore] = useState([])
     const [roomNumber,setRoomNumber] = useState("0")
+    const [roomList, setRoomList] = useState([])
 
     useEffect(()=>{
         //記得要改
@@ -38,6 +39,7 @@ function App(){
             updateScore()
             test()
             getRoomInfo()
+            
             //設定監聽
         }
     },[ws])
@@ -54,6 +56,11 @@ function App(){
                 if(msg.host == 1 & msg.uid == uid ){
                     
                     setHost(1)
+                }
+            })
+            ws.on("roomList", msg =>{
+                if(msg.uid == uid){
+                    setRoomList(msg.data)
                 }
             })
         }
@@ -89,9 +96,12 @@ function App(){
 
     const getRoomInfo = () =>{
         ws.on('roomInfo', msg => {
+            
             setRoomNumber(msg.msg)
         })
     }
+
+
 
 
     return(
@@ -110,7 +120,7 @@ function App(){
                                     <Score score = {score}/>
                                 </div>
                                                         }></Route>
-                        <Route path = "/lobby" element = {<Lobby uid = {uid} ws = {ws}/>}></Route>
+                        <Route path = "/lobby" element = {<Lobby uid = {uid} ws = {ws} roomList={roomList}/>}></Route>
 
                     </Routes>
                 </Router>
