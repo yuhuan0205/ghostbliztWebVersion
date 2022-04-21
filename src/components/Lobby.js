@@ -21,17 +21,15 @@ function Lobby(props){
         }
     }
 
-    const refresh = () =>{
-        ws.emit("getRoomList",{uid:uid})
-    }
-
     const joinRoomBybtn = (roomNumber)=>{
         ws.emit("joinRoom",{uid:uid, room:roomNumber})
         goPath('/game')
     }
 
+    const refresh = () =>{
+        ws.emit("getRoomList",{uid:uid})
+    }
 
-    // const rooms = [{rid:0},{rid:1},{rid:2}]
     return(
         <div className="innerPlace">
             <div className='lobbyPage'>
@@ -46,11 +44,10 @@ function Lobby(props){
             </div>
             <div className="roomList">
                 {   
-                    
                     roomList.map((roomItem, index)=>{
                         const room = roomItem
                         return(
-                            <Button value={room} type="button" onClick={()=>{joinRoomBybtn(room)}} className="room btn btn-secondary" style={{ gridRowStart: index+1 , gridRowRnd: index+2}}>{room}</Button>
+                            <Button type="button" onClick={()=>{joinRoomBybtn(room)}} className="room btn btn-secondary" style={{ gridRowStart: index+1 , gridRowRnd: index+2}}>{room}</Button>
                         )
                     })
                 }

@@ -19,34 +19,35 @@ body {
 }
 
 .mainPage{   
+    width: 1200px;
+    height: 650px;
+    background-color:rgb(224, 223, 223);
+    border-radius : 10px;
+
     grid-column-start: 6;
     grid-row-start: 6;
 
-    width: 1200px;
-    height: 650px;
-    /* margin: auto; */
     display: grid;
     grid-template-columns: repeat(15,1fr);
     grid-template-rows: repeat(15,1fr);
 
-    background-color:rgb(224, 223, 223);
-    border-radius : 10px;
 }
 
 .loginPage{
-    grid-column-start: 8;
-    grid-row-start: 8;
-    text-align: center;
-
     width: 500px;
     height: 300px;
+    text-align: center;
     background-color: rgb(185, 184, 184);
+    border-radius : 10px;
+
+    grid-column-start: 8;
+    grid-row-start: 8;
+    
     margin: auto;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    border-radius : 10px;
 }
 
 .logo{
@@ -54,16 +55,15 @@ body {
     font-size: 40px;
 }
 
-.userID{
-    font-family: 'Noto Sans TC', sans-serif;
+.loginID{
     width: 150px;
+    font-family: 'Noto Sans TC', sans-serif;
     border-radius : 5px;
 }
 
 .loginbtn{
     border-radius : 5px;
     margin-top: 10px;
-    /*position: relative ; top : 10px;*/
     font-family: 'Noto Sans TC', sans-serif;
     font-size: 12px;
     font-weight: bold;
@@ -71,21 +71,20 @@ body {
 .innerPlace{
     width: 1200px;
     height: 650px;
-    /* margin: auto; */
+    background-color:rgb(224, 223, 223);
+    border-radius : 10px;
+
     display: grid;
     grid-template-columns: repeat(15,1fr);
     grid-template-rows: repeat(15,1fr);
-
-    background-color:rgb(224, 223, 223);
-    border-radius : 10px;
 }
 
 .roomNumber{
+    text-align: center;
+
     grid-column-start: 2;
     grid-column-end: 4;
     grid-row-start: 3;
-    text-align: center;
-
 }
 
 .game{
@@ -93,6 +92,7 @@ body {
     grid-column-end: 12;
     grid-row-start: 3;
     grid-row-end: 14;
+
     display:flex;
     align-items: center;
     flex-direction: column;
@@ -101,6 +101,7 @@ body {
 
 .ansbtns{
     margin-top: 5vh;
+
     display: flex;
     align-items:center;
     flex-direction: row;
@@ -116,6 +117,7 @@ body {
 
 .quizbtns{
     margin-top: 5vh;
+
     display: flex;
     align-items:center;
     flex-direction: row;
@@ -128,66 +130,77 @@ body {
 }
 
 .scoretable{
-    
+    font-size: 14px;
+    border-radius: 6px;
+    overflow: hidden;
+
     grid-column-start: 12;
     grid-column-end: 15;
     grid-row-start: 2;
     grid-row-end: 10;
-    font-size: 14px;
 }
 
+
 .chat{
-    display: inline;
+    
+    background-color: black;
     color: green;
+    opacity: 0.8;
+
     grid-column-start: 2 ;
     grid-column-end: 5 ;
     grid-row-start: 10 ;
     grid-row-end: 14 ;
-    background-color: black;
-    opacity: 0.8;
+    
     overflow-y: auto;
     overflow-wrap: break-word;
+
+    display: inline;
 }
 
 .textBoxContainer{
-    display: inline;
     grid-column-start: 2 ;
     grid-column-end: 5 ;
     grid-row-start: 14 ;
     grid-row-end: 15 ;
+
+    display: inline;
 }
 .textBox{ 
     width: 80%;
 }
 
 .sendTextBtn{
-    font-family: 'Noto Sans TC', sans-serif;
-    height: 70%;
     width: 20%;
+    height: 70%;
     font-size: 13px;
+    font-family: 'Noto Sans TC', sans-serif;
 }
 
 
 .flip-card-inner {
-    position: relative;
     width: 150px;
     height: 250px;
+    position: relative;
     text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius : 10px;
+
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 }
 
 .flip-card-front, .flip-card-back {
-    position: absolute;
-    top:0;
-    left:0;
     width: 150px;
     height: 250px;
+    position: absolute;
+    border-radius : 10px;
+    top:0;
+    left:0;
+
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    border-radius : 10px;
+    
 }
   
 .flip-card-front {
@@ -196,6 +209,7 @@ body {
   
 .flip-card-back {
     color: white;
+
     transform: rotateY(-180deg);
 }
   
@@ -204,27 +218,26 @@ body {
 }
 
 .lobbyPage{
-    grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row-start: 8;
-    text-align: center;
-
     width: 300px;
     height: 500px;
     background-color: rgb(185, 184, 184);
-    
+    text-align: center;
+    border-radius : 10px;
+    box-shadow: 4px 4px 4px rgb(165, 165, 165);
+
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 8;
+
     display: flex;
     align-items: center;
     flex-direction: column;
-    
-    border-radius : 10px;
-    box-shadow: 4px 4px 4px rgb(165, 165, 165);
 }
 
 .icon{
-    margin-top: 30%;
     width: 100px;
     height: 100px;
+    margin-top: 30%;
     border-radius : 100px;
     background-image: url("./static/person-circle.svg");
     background-size: 100%;
@@ -248,16 +261,16 @@ body {
 }
 
 .roomList{
+    width: 750px;
+    height: 500px;
+    text-align: center;
+    background-color: rgb(224, 223, 223);
+    border-style: solid ;
+    border-radius : 10px;
+
     grid-column-start: 6;
     grid-column-end: 15;
     grid-row-start: 8;
-    text-align: center;
-    border-radius : 10px;
-    width: 750px;
-    height: 500px;
-    background-color: rgb(224, 223, 223);
-
-    border-style: solid ;
 
     display: grid;
     grid-template-columns: repeat(10,1fr);
@@ -265,15 +278,15 @@ body {
 }
 
 .room{
-    
-    margin-top: 20px;
     width: 600px;
     height: 80px;
+    margin-top: 20px;
+    font-size: 30px;
+    border-radius : 10px;
+
     grid-column-start: 2;
     grid-column-end: 8;
 
-    font-size: 30px;
-    border-radius : 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -287,24 +300,19 @@ body {
 }
 
 .refreshbtn{
-    /*Transparent img button*/
-    background-color: Transparent;
-    border: 0px;
-
-    margin-top: 10px;
     width: 50px;
     height: 50px;
+    background-color: Transparent;
+    border: 0px;
+    margin-top: 10px;
     background-image: url("./static/arrow-repeat.svg");
     background-size: 100%;
 
     transition: transform 1.0s;
-    
 }
 
 .refreshbtn:hover{
-
     transform: rotate(180deg);
-    
 }
 
 .refreshbtn:active{

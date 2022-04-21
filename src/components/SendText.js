@@ -1,8 +1,5 @@
 import React from "react"
 
-
-
-
 function SendTest(props){
     const ws = props.ws
     const uid = props.uid
