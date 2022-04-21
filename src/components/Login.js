@@ -27,7 +27,7 @@ function Login(props){
     }
 
     const connectToServer = () => {
-        let e = document.getElementsByClassName("userID")[0];
+        let e = document.getElementsByClassName("loginID")[0];
         if(e.value != ""){
             setUid(e.value) 
         }
