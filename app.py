@@ -7,11 +7,11 @@ import time
 
 
 
-# with open("./quiz.json") as f:
-#     quizSet = json.load(f)
-
-with open("./static/quiz.json") as f:
+with open("./quiz.json") as f:
     quizSet = json.load(f)
+
+# with open("./static/quiz.json") as f:
+#     quizSet = json.load(f)
 
 
 idDic = {}

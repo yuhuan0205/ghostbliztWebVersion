@@ -5,14 +5,14 @@ import Chat from "./components/Chat";
 import {useState, useEffect} from "react"
 import webSocket from 'socket.io-client'
 import SendText from "./components/SendText";
-import config from "./static/config.json"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Lobby from "./components/Lobby";
 import Score from "./components/Score";
 
 
-function App(){
 
+function App(){
+    
     const [ws,setWs] = useState(null)
     const [uid, setUid] = useState()
     const [gameState, setGameState] = useState("init")
@@ -25,7 +25,13 @@ function App(){
     useEffect(()=>{
         //記得要改
         // setWs(webSocket('http://35.236.187.48:8080'))
-        setWs(webSocket(config.ip))
+        if(process.env.NODE_ENV == 'production'){
+            setWs(webSocket(process.env.REACT_APP_GCP_URL))
+        }
+        else{
+            setWs(webSocket(process.env.REACT_APP_LOCAL_URL))
+        }
+        
     },[])
 
     useEffect(()=>{
