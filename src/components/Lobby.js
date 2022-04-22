@@ -6,6 +6,8 @@ function Lobby(props){
     const uid = props.uid
     const ws = props.ws
     const roomList = props.roomList
+    const setRoomList = props.setRoomList
+    const ip = props.ip
     const goPath = useNavigate();
 
     const createRoom = ()=>{
@@ -27,7 +29,8 @@ function Lobby(props){
     }
 
     const refresh = () =>{
-        ws.emit("getRoomList",{uid:uid})
+        fetch(ip+"/getroom").then(res=>res.json())
+            .then(data=>setRoomList(data.data))
     }
 
     return(

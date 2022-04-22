@@ -1,6 +1,7 @@
 
 from flask import Flask, render_template
 from flask_socketio import SocketIO, join_room, leave_room  # 加上這行
+from flask_cors import CORS, cross_origin
 import json
 import random
 import time
@@ -22,9 +23,10 @@ roomDic = {}
 
 #To set the static_folder, template_folder path rigth
 app = Flask(__name__, static_url_path='', static_folder='./build/', template_folder='./build/')
-# app = Flask(__name__, static_url_path='')
-
-#進行跨域 cors_allowed_origins='*'
+#http CORS setting
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+#WebSocket cors_allowed_origins='*'
 socketio = SocketIO(app, cors_allowed_origins='*')  # 加上這行
 
 
@@ -170,6 +172,11 @@ def joinRoom(msg):
 def getRoomList(msg):
     uid = msg["uid"]
     socketio.emit("roomList", {"uid": uid,"data": list(roomDic)})
+
+@app.route("/getroom")
+@cross_origin()
+def getRoom():
+    return {"data": list(roomDic)}
     
 
 @app.route("/room")

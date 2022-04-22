@@ -13,6 +13,7 @@ import Score from "./components/Score";
 
 function App(){
     
+    const [ip, setIp] = useState()
     const [ws,setWs] = useState(null)
     const [uid, setUid] = useState()
     const [gameState, setGameState] = useState("init")
@@ -27,13 +28,17 @@ function App(){
         //記得要改
         // setWs(webSocket('http://35.236.187.48:8080'))
         if(process.env.NODE_ENV == 'production'){
-            setWs(webSocket(process.env.REACT_APP_GCP_URL))
+            setIp(process.env.REACT_APP_GCP_URL)
         }
         else{
-            setWs(webSocket(process.env.REACT_APP_LOCAL_URL))
+            setIp(process.env.REACT_APP_LOCAL_URL)
         }
-        
+
     },[])
+
+    useEffect(()=>{
+        setWs(webSocket(ip))
+    },[ip])
 
     useEffect(()=>{
         if(ws){
@@ -53,11 +58,14 @@ function App(){
                     setIsHost(true)
                 }
             })
-            ws.on("roomList", msg =>{
-                if(msg.uid == uid){
-                    setRoomList(msg.data)
-                }
-            })
+            // ws.on("roomList", msg =>{
+            //     if(msg.uid == uid){
+            //         setRoomList(msg.data)
+            //     }
+            // })
+            fetch(ip+"/getroom").then(res=>res.json())
+            .then(data=>setRoomList(data.data))
+            
         }
     }
     ,[uid])
@@ -112,7 +120,7 @@ function App(){
                                     <Score score = {score}/>
                                 </div>
                                                         }></Route>
-                        <Route path = "/lobby" element = {<Lobby uid = {uid} ws = {ws} roomList={roomList}/>}></Route>
+                        <Route path = "/lobby" element = {<Lobby uid = {uid} ws = {ws} roomList={roomList} setRoomList={setRoomList} ip={ip}/>}></Route>
                     </Routes>
                 </Router>
             </div>
