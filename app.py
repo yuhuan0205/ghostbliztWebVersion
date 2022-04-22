@@ -131,11 +131,14 @@ def sendQuiz(msg):
         #Pick a quiz randomly.
         n = random.randint(1,30)
         n = "q" + str(n)
+        socketio.emit("updateCountDown", {"msg": "Ready"}, to = room )
+        time.sleep(1)
         for i in range(3):
-            socketio.emit("updateChat", {"uid": "GM", "msg": ": " + str(3-i) + "."}, to = room )
+            socketio.emit("updateCountDown", {"msg": str(3-i)}, to = room )
             time.sleep(1)
             
         socketio.emit("getQuiz", {"uid": uid, "quiz" : quizSet[n]}, to = room)
+        socketio.emit("updateCountDown", {"msg": "Answer"}, to = room )
         roomDic[room]["answerFlag"] = False
 
 

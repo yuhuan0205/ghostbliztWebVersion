@@ -103,7 +103,7 @@ function App(){
                         <Route path = "/game" element = {
                                 <div className="innerPlace">
                                     <div className="roomNumber">{"#"+roomNumber}</div>
-                                    <div className="countDown">{countDown}</div>
+                                    <div className="countDownContainer"><p className="countDown">{countDown}</p></div>
                                     <Game  ws = {ws} uid = {uid} setUid = {setUid} 
                                         gameState = {gameState} setGameState = {setGameState} 
                                         isHost = {isHost} />

@@ -92,18 +92,26 @@ body {
     grid-row-start: 3;
 }
 
-.countDown{
-    font-size: 70px;
-    font-family: 'Noto Sans TC', sans-serif;
+.countDownContainer{
     background-color: rgb(249, 248, 248);
-    border-radius : 30px;
-    text-align: center;
-    font-weight: bold;
+    border-radius : 20px;
 
     grid-column-start: 2;
     grid-column-end: 5;
-    grid-row-start: 6;
+    grid-row-start: 5;
     grid-row-end: 9;
+    
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.countDown{
+    font-size: 60px;
+    font-family: 'Noto Sans TC', sans-serif;
+    text-align: center;
+    font-weight: bold;
 }
 
 .game{
