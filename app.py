@@ -21,7 +21,7 @@ roomDic = {}
 # answeredFlag = False
 
 #To set the static_folder, template_folder path rigth
-app = Flask(__name__, static_url_path='', static_folder='./ghostblizt/build/', template_folder='./ghostblizt/build/')
+app = Flask(__name__, static_url_path='', static_folder='./build/', template_folder='./build/')
 # app = Flask(__name__, static_url_path='')
 
 #進行跨域 cors_allowed_origins='*'
