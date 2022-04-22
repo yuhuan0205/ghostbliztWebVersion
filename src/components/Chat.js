@@ -5,7 +5,7 @@ function Chat(props){
     
     return(
         <div className="chat">
-            <ul>
+            <ul className="chatList">
                 {
                     chatState.map( (chatItem) =>{
                         const {uid, msg} = chatItem

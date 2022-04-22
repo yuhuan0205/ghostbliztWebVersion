@@ -80,11 +80,30 @@ body {
 }
 
 .roomNumber{
+    font-size: 26px;
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: rgb(249, 248, 248);
+    border-radius : 10px;
     text-align: center;
+    font-weight: bold;
 
     grid-column-start: 2;
-    grid-column-end: 4;
+    grid-column-end: 5;
     grid-row-start: 3;
+}
+
+.countDown{
+    font-size: 70px;
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: rgb(249, 248, 248);
+    border-radius : 30px;
+    text-align: center;
+    font-weight: bold;
+
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 6;
+    grid-row-end: 9;
 }
 
 .game{
@@ -146,6 +165,7 @@ body {
     background-color: black;
     color: green;
     opacity: 0.8;
+    border-radius : 5px;
 
     grid-column-start: 2 ;
     grid-column-end: 5 ;
@@ -158,6 +178,12 @@ body {
     display: inline;
 }
 
+.chatList{
+    list-style-type:none;
+    margin-left: 10px;
+    padding: 0;
+}
+
 .textBoxContainer{
     grid-column-start: 2 ;
     grid-column-end: 5 ;
@@ -167,15 +193,29 @@ body {
     display: inline;
 }
 .textBox{ 
+    margin-top: 1px;
+    border-radius : 5px;
     width: 80%;
 }
 
 .sendTextBtn{
     width: 20%;
     height: 70%;
+    color: aliceblue;
     font-size: 13px;
     font-family: 'Noto Sans TC', sans-serif;
+    background-color: #6c757d;
+    border-radius : 5px;
+    text-align:center;
+
+    margin-top: 0;
 }
+
+.sendTextBtn:active {
+    border-style: outset;
+    transition: transform 0.1s;
+    transform: scale(0.95)
+  }
 
 
 .flip-card-inner {

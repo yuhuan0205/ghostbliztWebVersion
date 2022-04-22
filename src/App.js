@@ -21,6 +21,7 @@ function App(){
     const [score, setScore] = useState([])
     const [roomNumber,setRoomNumber] = useState("0")
     const [roomList, setRoomList] = useState([])
+    const [countDown, setCountDown] = useState("Ready")
 
     useEffect(()=>{
         //記得要改
@@ -40,6 +41,7 @@ function App(){
             updateChat()
             updateScore()
             getRoomInfo()
+            updateCountDown()
         }
     },[ws])
 
@@ -75,6 +77,12 @@ function App(){
         })
     }
 
+    const updateCountDown = () =>{
+        ws.on('updateCountDown', msg => {
+            setCountDown(msg.msg)
+        })
+    }
+
     const updateScore = () =>{
         ws.on('updateScore', msg => {
             setScore(prevArray => msg.data )
@@ -94,7 +102,8 @@ function App(){
                         <Route path = "/" element = {<Login ws = {ws} uid = {uid} setUid = {setUid}/>}></Route>
                         <Route path = "/game" element = {
                                 <div className="innerPlace">
-                                    <h3 className="roomNumber">{roomNumber}</h3>
+                                    <div className="roomNumber">{"#"+roomNumber}</div>
+                                    <div className="countDown">{countDown}</div>
                                     <Game  ws = {ws} uid = {uid} setUid = {setUid} 
                                         gameState = {gameState} setGameState = {setGameState} 
                                         isHost = {isHost} />
