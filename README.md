@@ -27,6 +27,50 @@
 ``http://localhost:5000``  
 即可進入遊戲頁面
 
+# Modify project 
+## Directory Structure
+```
+ghostbliztWebVersion
+│   README.md
+│   app.py (Server code)   
+|   .env (React environment variable)
+│
+└───build (Builded front-end project)
+│   |
+│   ... 
+│   
+└───src
+    │   App.js (main React code)
+    │   index.js (rendering App.js)
+    |   index.html
+    |   style.css
+    |
+    └───static (contain static img)
+    |    |
+    |    ...
+    └───components (React components) 
+        |  Login.js
+        |  Game.js
+        ...
+```
+## Back End
+直接修改app.py即可
+## Front End
+### 安裝node.js 以及 npm
+#### Windows
+參考 https://nodejs.org/en/  
+安裝完後開啟CMD 並輸入 ``$npm -v``  
+#### Linux
+``$sudo apt-get install nodejs``  
+``$sudo apt-get install npm``
+### 安裝JavaScript套件
+``$cd ghostbliztWebVersion``  
+``$npm install``
+``$npm start``
+開啟瀏覽器 url輸入``http://localhost:3000`` 即可進入前端頁面(此時Flask Server尚未開啟，開啟方法同Quick start)  
+修改style.css 、App.js 或其他 React components 便可以改動前端頁面  
+修改完成後``$npm run build``打包React project
+
 # Run on GCP (Google Cloud Platform)
 #### 建立運算個體
 1. 進入GCP 主頁，並申請GCP帳號。
@@ -36,6 +80,7 @@
 5. ``網路標記``加入先前自訂之個體名稱
 6. 防火牆設定中，務必勾選``允許 https 流量`` ``允許 http 流量``
 7. 建立完成
+8. 執行個體右側 SSH 點擊後即可進入執行個體的終端
 #### 防火牆設定
 1. 左側選單點擊 ``虛擬私有雲網路``
 2. 進入 ``防火牆``
@@ -45,6 +90,13 @@
 6. ``IP 範圍設定`` 輸入 0.0.0.0/0 允許所有 IP
 7. 設定開啟的 Port，選取TCP 輸入 ``3000, 5000``(本專案使用到的port 為 5000, 3000)
 8. 建立完成
+#### 保留靜態IP位置
+1. 左側選單點擊 ``虛擬私有雲網路``
+2. 進入 ``外部IP位置``
+3. 保留靜態位置
+4. 名稱設定與執行個體名稱一致
+5. 設定完成
+6. 此時運行執行個體的外部IP位置就會是固定的IP
 #### 執行個體環境設定
 升級apt
 ```
@@ -64,6 +116,10 @@ $cd ghostbliztWebVersion
 ```
 $pip install -r requirements.txt
 ```
+>此時安裝node.js 及 npm，同上方Linux安裝方法  
+>將 .env 檔案中的``REACT_APP_GCP_URL=http://ip_address:5000`` ip_address 改成GCP執行個體上的外部IP
+``$npm run build``
+
 用 gunicorn 作為反向代理伺服器開啟flask app
 ```
 $gunicorn -b 0.0.0.0:5000 -k flask_sockets.worker yourApp:app
