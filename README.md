@@ -124,3 +124,4 @@ $pip install -r requirements.txt
 ```
 $gunicorn -b 0.0.0.0:5000 -k flask_sockets.worker yourApp:app
 ```
+開啟瀏覽器 url輸入``http:/your_GCP_IP:5000`` 即可進入遊戲頁面
