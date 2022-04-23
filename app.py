@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template
 from flask_socketio import SocketIO, join_room, leave_room  # 加上這行
 from flask_cors import CORS, cross_origin
@@ -7,19 +6,13 @@ import random
 import time
 
 
-
 with open("./quiz.json") as f:
     quizSet = json.load(f)
-
-# with open("./static/quiz.json") as f:
-#     quizSet = json.load(f)
 
 
 idDic = {}
 roomDic = {}
 
-# global answeredFlag
-# answeredFlag = False
 
 #To set the static_folder, template_folder path rigth
 app = Flask(__name__, static_url_path='', static_folder='./build/', template_folder='./build/')
@@ -30,33 +23,20 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 socketio = SocketIO(app, cors_allowed_origins='*')  # 加上這行
 
 
-
-
 @app.route('/')
 def index():
     return render_template("index.html")
 
-
 @socketio.on('login')
 def login(msg):
-    
-    # if idDic == {}:
-    #     idDic[userID["uid"]] = {"uid" : userID["uid"] ,"score":0, "host":1, "room":"0"}
-    #     socketio.emit("update", {"uid":userID['uid'], "msg":"has connected."})
-    # else:
     idDic[msg["uid"]] = {"uid" : msg["uid"] , "score":0, "isHost":True, "room":"0"}
-        # socketio.emit("update", {"uid":userID['uid'], "msg":"has connected."})
-    #update score
-    # socketio.emit("updateScore", {"data":list(idDic.values())})
 
 @socketio.on("hostCheck")
 def hostCheck(msg):
     socketio.emit("isHost", {"uid":msg['uid'],"isHost":idDic[msg['uid']]["isHost"]})
 
-
 @socketio.on("discon")
 def discon(msg):
-    
     #player do not login.
     if idDic == {}:
         return
@@ -73,28 +53,21 @@ def discon(msg):
             if len(roomDic[room]["id"])!=1:
                 #Set next member to be a host.
                 roomDic[room]["id"][1]["isHost"] = 1
-
                 socketio.emit("updateChat", {"uid": uid, "msg":"has disconnected."}, to = room)
                 socketio.emit("updateChat", {"uid": roomDic[room]["id"][1]["uid"], "msg": "is the new host."}, to = room)
                 socketio.emit("isHost", {"uid": roomDic[room]["id"][1]["uid"], "isHost": 1}, to = room)
                 roomDic[room]["id"].remove(idDic[uid])
                 socketio.emit("updateScore", {"data":roomDic[room]["id"]}, to = room)
-            
             #There is only a player in the room.
             else:
                 roomDic.pop(room,None)
-        
         #Player who is not a host disconnect.
         else:
             socketio.emit("updateChat", {"uid":uid, "msg":"has disconnected."}, to = room)
             socketio.emit("updateScore", {"data":roomDic[room]["id"]}, to = room)
             roomDic[room]["id"].remove(idDic[uid])
             socketio.emit("updateScore", {"data":roomDic[room]["id"]}, to = room)
-        
         idDic.pop(uid,None)
-    
-    
-    
     
 
 @socketio.on("sendAns")
@@ -122,10 +95,8 @@ def sendMsg(msg):
     socketio.emit("updateChat", {"uid": uid, "msg": " : " + msg["msg"]}, to = room)
 
 
-
 @socketio.on('sendQuiz')
 def sendQuiz(msg):
-    # global answeredFlag
     uid = msg["uid"]
     if idDic[uid]["isHost"] == 1:
         room = idDic[uid]["room"]
