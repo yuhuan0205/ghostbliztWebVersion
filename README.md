@@ -55,16 +55,16 @@ $sudo apt-get upgrade
 ```
 $sudo apt-get install python3-pip
 ```
-#從 github 上 clone project
+從 github 上 clone project
 ```
 $git clone https://github.com/yuhuan0205/ghostbliztWebVersion
 $cd ghostbliztWebVersion
 ```
-#安裝需要的python 套件
+安裝需要的python 套件
 ```
 $pip install -r requirements.txt
 ```
-#用 gunicorn 作為反向代理伺服器開啟flask app
+用 gunicorn 作為反向代理伺服器開啟flask app
 ```
 $gunicorn -b 0.0.0.0:5000 -k flask_sockets.worker yourApp:app
 ```
