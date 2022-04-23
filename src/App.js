@@ -54,8 +54,13 @@ function App(){
         if(ws){
             ws.emit("hostCheck",{uid:uid})
             ws.on("isHost", msg =>{
+                
                 if(msg.isHost == true & msg.uid == uid ){    
                     setIsHost(true)
+                    
+                }
+                else if(msg.isHost == false & msg.uid == uid ){
+                    setIsHost(false)
                 }
             })
             // ws.on("roomList", msg =>{

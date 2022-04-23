@@ -135,7 +135,9 @@ def joinRoom(msg):
     room = msg["room"]
     roomDic[room]["id"].append(idDic[uid])
     idDic[uid]["room"] = room
+    idDic[uid]["isHost"] = False
     join_room(room)
+    socketio.emit("isHost", {"uid": uid, "isHost": idDic[uid]["isHost"]},to = room)
     socketio.emit("roomInfo",{"msg": room },to = room)
     socketio.emit("updateScore", {"data": roomDic[room]["id"]}, to = room)
     

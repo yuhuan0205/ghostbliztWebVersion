@@ -35,7 +35,7 @@ function Login(props){
 
     return(
         <div className="loginPage">
-            <h1 className="logo">閃靈快手Dev</h1>
+            <h1 className="logo">閃靈快手Web</h1>
             <input type="text" className="loginID" placeholder="playerID" onKeyPress = {connectToServerByEnter}/><br/>
             <Button onClick={connectToServer} className="loginbtn btn btn-secondary">Login</Button>
         </div>
