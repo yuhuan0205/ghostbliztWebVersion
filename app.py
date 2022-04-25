@@ -15,7 +15,7 @@ roomDic = {}
 
 
 #To set the static_folder, template_folder path rigth
-app = Flask(__name__, static_url_path='', static_folder='./build/', template_folder='./build/')
+app = Flask(__name__, static_url_path='', static_folder='./FE/build/', template_folder='./FE/build/')
 #http CORS setting
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
