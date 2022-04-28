@@ -33,7 +33,11 @@ def login(msg):
 
 @socketio.on("hostCheck")
 def hostCheck(msg):
-    socketio.emit("isHost", {"uid":msg['uid'],"isHost":idDic[msg['uid']]["isHost"]})
+    abd(socketio,msg)
+
+def abd(sock,msg):
+    print(123)
+    sock.emit("isHost", {"uid":msg['uid'],"isHost":idDic[msg['uid']]["isHost"]})
 
 @socketio.on("discon")
 def discon(msg):
