@@ -11,6 +11,7 @@ class GameService:
         self.quizSet = self.readQuizSet()
         self.idDic = {}
         self.roomDic = {}
+        self.emptyRoomList = list(range(1000,10000))
 
     def readQuizSet(self):
         with open("./quiz.json") as f:
@@ -20,11 +21,9 @@ class GameService:
     def login(self, msg):
         self.idDic[msg["uid"]] = {"uid" : msg["uid"] , "score":0, "isHost":True, "room":"0"}
 
-
     def hostCheck(self, msg):
         self.sk.emit("isHost", {"uid":msg['uid'],"isHost":self.idDic[msg['uid']]["isHost"]})
         
-
     def discon(self, msg):
         #player do not login.
         if self.idDic == {}:
@@ -50,6 +49,7 @@ class GameService:
                 #There is only a player in the room.
                 else:
                     self.roomDic.pop(room,None)
+                    self.emptyRoomList.append(room)
             #Player who is not a host disconnect.
             else:
                 self.sk.emit("updateChat", {"uid":uid, "msg":"has disconnected."}, to = room)
@@ -58,7 +58,6 @@ class GameService:
                 self.sk.emit("updateScore", {"data":self.roomDic[room]["id"]}, to = room)
             self.idDic.pop(uid,None)
         
-
     def update(self, msg):
         uid = msg["uid"]
         room = self.idDic[uid]["room"]
@@ -81,7 +80,6 @@ class GameService:
         room = self.idDic[uid]["room"]
         self.sk.emit("updateChat", {"uid": uid, "msg": " : " + msg["msg"]}, to = room)
 
-
     def sendQuiz(self, msg):
         uid = msg["uid"]
         if self.idDic[uid]["isHost"] == 1:
@@ -103,7 +101,8 @@ class GameService:
     def createRoom(self, msg):
         uid = msg["uid"]
         #TO DO : Adding a checking mechanism prevent same room number occuring.
-        room = str(random.randint(1000,9999))
+        room = self.emptyRoomList.pop(random.randint(0,len(self.emptyRoomList)-1))
+        room = str(room)
         self.idDic[uid]["isHost"] = 1
         self.idDic[uid]["room"] = room
         #put info which in idDic into roomDic

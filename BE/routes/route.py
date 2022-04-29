@@ -29,7 +29,6 @@ def initRoute(app, socketio, gs):
     def sendMsg(msg):
         gs.sendMsg(msg)
 
-
     @socketio.on('sendQuiz')
     def sendQuiz(msg):
         gs.sendQuiz(msg)
@@ -42,10 +41,6 @@ def initRoute(app, socketio, gs):
     def joinRoom(msg):
         gs.joinRoom(msg)
         
-    @socketio.on("getRoomList")
-    def getRoomList(msg):
-        gs.getRoom(msg)
-
     @app.route("/getroom")
     @cross_origin()
     def getRoom():
