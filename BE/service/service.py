@@ -2,10 +2,13 @@ from flask_socketio import join_room, leave_room  # 加上這行
 import json
 import random
 import time
+from pathlib import Path
+
 
 class GameService:
     
     def __init__(self, app, socketio):
+        
         self.app = app
         self.sk = socketio
         self.quizSet = self.readQuizSet()
@@ -14,7 +17,8 @@ class GameService:
         self.emptyRoomList = list(range(1000,10000))
 
     def readQuizSet(self):
-        with open("./quiz.json") as f:
+        filePath = (Path(__file__).parent / "../static/quiz.json")
+        with filePath.open() as f:
             quizSet = json.load(f)
         return quizSet
 
