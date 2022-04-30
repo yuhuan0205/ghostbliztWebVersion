@@ -33,27 +33,42 @@ http://ghostblizt.yuhuan.site/
 ## Directory Structure
 ```
 ghostbliztWebVersion
-│   README.md
-│   app.py (Server code)   
-|   .env (React environment variable)
-│
-└───build (Builded front-end project)
+│   README.md 
+|   
+└───BE (Back-end project folder)
+│   |   requirements.txt (Python requirements package)
+│   |   app.py (back-end server program entry point)
+|   |
+|   |───routes (manage routes)
+|   |   |─── __init__.py
+|   |   └─── route.py
+|   |
+|   |───service (manage service)
+|   |   |─── __init__.py
+|   |   └─── service.py
 │   |
-│   ... 
-│   
-└───src
-    │   App.js (main React code)
-    │   index.js (rendering App.js)
-    |   index.html
-    |   style.css
+|   └───static (store static file)
+|       └─── quiz.json
+|   
+└───FE (Front-end project folder)
+    |   .env (React environment variable)
     |
-    └───static (contain static img)
-    |    |
-    |    ...
-    └───components (React components) 
-        |  Login.js
-        |  Game.js
-        ...
+    |───build (Builded front-end project)
+    |   |
+    |   ...
+    └───src
+        │   App.js (main React code)
+        │   index.js (rendering App.js)
+        |   index.html
+        |   style.css
+        |
+        └───static (contain static img)
+        |    |
+        |    ...
+        └───components (React components) 
+            |  Login.js
+            |  Game.js
+            ...
 ```
 ## Back End
 直接修改app.py即可
