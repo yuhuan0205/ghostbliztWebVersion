@@ -5,7 +5,10 @@
 /.pnp
 .pnp.js
 
-/__pycache__
+#caches
+/BE/__pycache__
+/BE/routes/__pycache__
+/BE/service/__pycache__
 # testing
 /coverage
 
