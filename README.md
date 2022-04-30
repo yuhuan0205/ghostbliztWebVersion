@@ -21,6 +21,8 @@ http://ghostblizt.yuhuan.site/
 ``$git clone https://github.com/yuhuan0205/ghostbliztWebVersion ``  
 #### 進入專案資料夾
 ``$cd ghostbliztWebVersion``   
+#### 進入後端專案資料夾
+``$cd BE`` 
 #### 安裝所需Python套件
 ``$pip install -r requirements.txt``
 #### 運行Flask Server
@@ -82,6 +84,7 @@ ghostbliztWebVersion
 ``$sudo apt-get install npm``
 ### 安裝JavaScript套件
 ``$cd ghostbliztWebVersion``  
+``$cd FE`` 
 ``$npm install``
 ``$npm start``
 開啟瀏覽器 url輸入``http://localhost:3000`` 即可進入前端頁面(此時Flask Server尚未開啟，開啟方法同Quick start)  
