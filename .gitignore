@@ -6,6 +6,7 @@
 .pnp.js
 
 #caches
+/__pycache__
 /BE/__pycache__
 /BE/routes/__pycache__
 /BE/service/__pycache__
