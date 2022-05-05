@@ -4,6 +4,8 @@ WORKDIR /flask
 
 ADD . /flask
 
+WORKDIR /flask/BE
+
 RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
