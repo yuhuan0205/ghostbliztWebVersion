@@ -10,4 +10,4 @@ RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 
-CMD gunicorn -w 1 -b :5000 -k gevent app:app
+CMD gunicorn -w 1 -b :5000 -k flask_sockets.worker app:app
